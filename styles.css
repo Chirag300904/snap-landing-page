@@ -1,0 +1,373 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap");
+
+:root {
+  --primary-white: hsl(0, 0%, 98%);
+  --primary-gray: hsl(0, 0%, 41%);
+  --primary-black: hsl(0, 0%, 8%);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Epilogue", sans-serif;
+  min-height: 100vh;
+  background-color: var(--primary-white);
+}
+
+main {
+  display: grid;
+  position: relative;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-icon,
+.logo {
+  margin: 1.5rem 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+li,
+li a {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--primary-gray);
+}
+
+li:hover,
+li a:hover {
+  cursor: pointer;
+  color: var(--primary-black);
+}
+
+a {
+  text-decoration: none;
+}
+
+.md-menu {
+  display: none;
+}
+
+.sm-menu.expanded {
+  transform: translateX(0);
+  transition: ease-out 0.25s;
+}
+
+.sm-menu {
+  position: fixed;
+  right: 0;
+  width: 100%;
+  background-color: hsla(0, 0%, 8%, 0.7);
+  min-height: 100vh;
+  transform: translateX(100%);
+  transition: linear 0.2s;
+}
+
+.menu {
+  background-color: var(--primary-white);
+  width: 65%;
+  margin-left: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.75rem;
+}
+
+.close-menu {
+  margin-left: auto;
+  display: inline-block;
+}
+
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 1rem;
+  gap: 1.25rem;
+  align-items: flex-start;
+  color: var(--primary-gray);
+}
+
+.features::after {
+  content: url(./images/icon-arrow-down.svg);
+}
+
+.company::after {
+  content: url(./images/icon-arrow-down.svg);
+}
+
+.menu .inner-menu {
+  margin: -29px 0.5rem;
+  display: none;
+}
+
+.menu .inner-menu.expanded {
+  display: flex;
+}
+
+.features.expanded::after,
+.company.expanded::after {
+  content: url(./images/icon-arrow-up.svg);
+}
+
+.auth {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+}
+
+.auth li:last-of-type {
+  display: inline-block;
+  border: 2px solid var(--primary-gray);
+  inline-size: 100%;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 12px;
+  max-inline-size: 200px;
+}
+
+.hero {
+  background-image: url(./images/image-hero-mobile.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+  block-size: 300px;
+  order: 1;
+}
+
+section {
+  text-align: center;
+  order: 2;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--primary-gray);
+  font-weight: 500;
+  line-height: 1.25rem;
+  padding: 0 1.75rem;
+}
+
+section a {
+  display: inline-block;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  text-decoration: none;
+  inline-size: 35%;
+  margin: 1.5rem 0;
+  padding: 0.75rem 0.25rem;
+  max-inline-size: 150px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+section a:hover {
+  color: var(--primary-black);
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid var(--primary-black);
+}
+
+.clients {
+  order: 3;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.clients img {
+  inline-size: 60px;
+  object-fit: contain;
+}
+
+@media (min-width: 600px) {
+  .content {
+    display: grid;
+    grid-template-areas: "section hero" "clients hero";
+    width: 90%;
+    margin: auto;
+    gap: 1rem;
+    place-content: space-evenly;
+  }
+
+  .hero {
+    background-image: url(./images/image-hero-desktop.png);
+    background-size: contain;
+    grid-area: hero;
+    order: 1;
+    inline-size: 320px;
+    block-size: 550px;
+  }
+
+  section {
+    grid-area: section;
+    order: 2;
+    text-align: left;
+    place-self: flex-end;
+  }
+
+  h1 {
+    max-inline-size: 350px;
+    font-size: 3rem;
+  }
+
+  p {
+    padding: 0;
+    max-inline-size: 350px;
+  }
+
+  section a {
+    margin: 3rem 0;
+  }
+
+  .clients {
+    grid-area: clients;
+    max-inline-size: 350px;
+    margin: 0 auto;
+    inline-size: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    inline-size: 500px;
+  }
+  h1 {
+    font-size: 3.65rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  nav {
+    margin: 0.5rem 2rem 2rem 2rem;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .close-menu {
+    display: none;
+  }
+
+  .sm-menu {
+    position: relative;
+    transform: translateX(0);
+    min-height: auto;
+    background: transparent;
+    width: 100%;
+  }
+
+  .menu {
+    height: auto;
+    width: 100%;
+    background: transparent;
+  }
+
+  .menu ul {
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .menu .inner-menu {
+    position: absolute;
+    background-color: white;
+    flex-direction: column;
+    top: 2rem;
+    align-items: baseline;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 10px 40px rgb(0 0 0 / 15%);
+    margin: 0 1.5rem;
+  }
+
+  .inner-menu ul {
+    flex-direction: column;
+  }
+
+  .features + .inner-menu {
+    left: -5%;
+  }
+
+  .company + .inner-menu {
+    left: 8%;
+  }
+
+  .auth {
+    flex-direction: row;
+    margin-left: auto;
+    width: auto;
+  }
+
+  .auth li:last-of-type {
+    padding: 0.5rem 1.25rem;
+  }
+
+  .auth ul {
+    gap: 2.25rem;
+  }
+
+  .content {
+    place-content: space-between;
+    max-width: 1100px;
+    gap: 2.5rem;
+    align-items: flex-end;
+    margin: 2.5rem auto 1rem auto;
+  }
+
+  .hero {
+    block-size: 620px;
+  }
+
+  h1 {
+    font-size: 5rem;
+    max-inline-size: 530px;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    max-inline-size: 420px;
+  }
+
+  .clients {
+    max-inline-size: 100%;
+    justify-content: flex-start;
+    gap: 1.75rem;
+  }
+
+  .clients img {
+    inline-size: 80px;
+  }
+
+  .clients img:first-of-type {
+    inline-size: 100px;
+  }
+}
